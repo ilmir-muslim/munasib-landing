@@ -83,6 +83,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Добавляем обработчик свайпов для главного изображения
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    mainImg.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    mainImg.addEventListener('touchend', function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        const minSwipeDistance = 50; // минимальное расстояние свайпа
+
+        if (touchStartX - touchEndX > minSwipeDistance) {
+            // Свайп влево - следующее изображение
+            showImage(currentIndex + 1);
+        } else if (touchEndX - touchStartX > minSwipeDistance) {
+            // Свайп вправо - предыдущее изображение
+            showImage(currentIndex - 1);
+        }
+    }
+
     // Активируем первую миниатюру при загрузке
     if (thumbnails.length > 0) {
         showImage(0, true);
