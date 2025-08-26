@@ -1,0 +1,278 @@
+/* Общие стили */
+body {
+  background-color: #111;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #eaeaea;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Фон для всего сайта - ИСПРАВЛЕННЫЙ ПУТЬ */
+.site-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/bg_gpt_2.png") center/cover no-repeat;
+  z-index: -2;
+  filter: brightness(0.3);
+}
+
+/* Контент выше фона */
+.site-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 80px;
+  /* Отступ для фиксированного навбара */
+}
+
+/* Навигация */
+.navbar {
+  z-index: 1000;
+  padding: 15px 0;
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Секция "О компании" */
+.about-section {
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Секция продукции */
+.products-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Контейнер для основного контента */
+.products-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  /* Ограничиваем высоту контейнера */
+  justify-content: space-between;
+}
+
+/* Увеличиваем только первое главное изображение */
+.main-product-image:first-child .large-img {
+  max-height: 90vh !important;
+  /* Увеличиваем высоту */
+  max-width: 95% !important;
+  /* Увеличиваем ширину */
+
+}
+
+.large-img.smaller {
+  max-height: 50vh !important;
+}
+
+.products-hero.smaller-active {
+  padding-bottom: 150px;
+}
+
+.large-img {
+  max-height: 60vh;
+  width: auto;
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
+}
+
+.large-img:hover {
+  transform: scale(1.02);
+}
+
+.products-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-color: #444 #222;
+  scrollbar-width: thin;
+  padding: 15px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.products-scroll {
+  padding: 10px;
+}
+
+.products-scroll img {
+  height: 120px;
+  margin-right: 15px;
+  border-radius: 8px;
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
+  opacity: 0.7;
+  object-fit: cover;
+}
+
+.products-scroll img:hover,
+.products-scroll img.active {
+  transform: scale(1.2);
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.products-scroll img.active {
+  border: 3px solid #fff;
+}
+
+/* Для кастомных скроллбаров (в Chrome/Edge) */
+.products-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.products-wrapper::-webkit-scrollbar-track {
+  background: #222;
+  border-radius: 4px;
+}
+
+.products-wrapper::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.products-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* Блок преимуществ */
+.advantages {
+  background: rgba(15, 15, 15, 0.9);
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 25px;
+}
+
+/* Карточки: на десктопе 2 в ряд, последняя растянется; на мобиле — по одной */
+.adv-item {
+  grid-column: span 6;
+  background: rgba(26, 26, 26, 0.9);
+  border: 1px solid #333;
+  border-radius: 14px;
+  padding: 25px;
+  color: #e9e9e9;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.adv-item:last-child {
+  grid-column: span 12;
+}
+
+@media (max-width: 992px) {
+  .adv-item {
+    grid-column: span 12;
+  }
+}
+
+.adv-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border-color: #444;
+}
+
+/* Номер-бейдж */
+.adv-num {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #111;
+  border: 1px solid #444;
+  color: #cfcfcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.adv-title {
+  margin: 0 0 15px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.adv-text {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #d6d6d6;
+}
+
+/* Контакты */
+#contacts {
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Футер */
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .main-product-image:first-child .large-img {
+    max-height: 75vh !important;
+    /* Немного меньше на мобильных */
+    max-width: 98% !important;
+  }
+
+  .large-img {
+    max-height: 50vh;
+  }
+
+  .large-img.smaller {
+    max-height: 40vh !important;
+  }
+
+  .products-hero {
+    padding: 80px;
+  }
+
+  .products-scroll img {
+    height: 80px;
+  }
+
+  .about-section,
+  .products-hero,
+  .advantages,
+  #contacts {
+    padding: 60px;
+  }
+
+  .site-content {
+    padding-top: 70px;
+  }
+}
+
